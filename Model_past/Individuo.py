@@ -2,6 +2,9 @@ from random import random
 
 
 class Individuo():
+    def __init__(self) -> None:
+        pass
+#-----------------↓ Construtor da Classe ↓----------------------------------------
     def __init__(self, espacos, valores, limite_espacos, geracao=0):
         self.espacos = espacos
         self.valores = valores
@@ -17,6 +20,7 @@ class Individuo():
             else:
                 self.cromossomo.append('1')
 
+#-----------------↓ Função de Avalaiação ↓----------------------------------------
     def avaliacao(self):
         nota = 0
         soma_espacos = 0
@@ -29,6 +33,7 @@ class Individuo():
         self.nota_avaliacao = nota
         self.espaco_usado = soma_espacos
 
+#-----------------↓ Função de Crossover ↓----------------------------------------
     def crossover(self, outro_individuo):
         corte = round(random() * len(self.cromossomo))
 
@@ -40,7 +45,7 @@ class Individuo():
         filhos[0].cromossomo = filho1
         filhos[1].cromossomo = filho2
         return filhos
-
+#-----------------↓ Função de Mutação ↓----------------------------------------
     def mutacao(self, taxa_mutacao):
         print(f'Antes {self.cromossomo}')
         for i in range(len(self.cromossomo)):
@@ -51,3 +56,4 @@ class Individuo():
                     self.cromossomo[i] = '1'
         print(f'Depois {self.cromossomo}')
         return self
+#----------------------------------------------------------------------------------

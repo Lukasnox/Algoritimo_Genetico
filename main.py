@@ -1,8 +1,10 @@
 from Model_past.Individuo import Individuo
 from Model_past.Produto_class import Produto
-
+from Model_past.AlgoritmoGenetico import AlgoritmoGenetico
+#-----------------------------↑ Importando ↑---------------------------------------
 
 if __name__ == '__main__':
+#-----------------------------↓ Adicionando ↓--------------------------------------
 
     lista_produtos = []
     lista_produtos.append(Produto("Geladeira Dako", 0.751, 999.90))
@@ -23,42 +25,31 @@ if __name__ == '__main__':
     espacos = []
     valores = []
     nomes = []
-    limite = 3
+
     for produto in lista_produtos:
         espacos.append(produto.espaco)
         valores.append( produto.valor)
         nomes.append(produto.nome)
-
-    print('\n')
-
-    individuo1 = Individuo(espacos,valores,limite)
-    print("Individuo1 ↓")
-    for i in range(len(lista_produtos)):
-        if individuo1.cromossomo[i] == '1':
-            print(f'Nome: {lista_produtos[i].nome} / R$ {lista_produtos[i].valor}')
     
-    individuo1.avaliacao()
-    print(f'Nota = {individuo1.nota_avaliacao}')
-    print(f'Espaço Usado = {individuo1.espaco_usado}')
+    limite = 3
 
-    print('\n')
+#-----------------------------↓ Exibindo ↓------------------------------------------
 
-    individuo2 = Individuo(espacos,valores,limite)
-    print("Individuo2 ↓")
-    for i in range(len(lista_produtos)):
-        if individuo2.cromossomo[i] == '1':
-            print(f'Nome: {lista_produtos[i].nome} / R$ {lista_produtos[i].valor}')
+    
 
-    individuo2.avaliacao()
-    print(f'Nota = {individuo2.nota_avaliacao}')
-    print(f'Espaço Usado = {individuo2.espaco_usado}')
+    tamanho_populacao = 20
+    ag = AlgoritmoGenetico(tamanho_populacao)
+    ag.inicializa_populacao(espacos,valores,limite)
 
-    print('\n')
+    for individuo in ag.populacao:
+        individuo.avaliacao()
+   
+    ag.ordena_populacao()
+    ag.melhor_individuo(ag.populacao[0])
+    
 
-    individuo1.crossover(individuo2)
+    print(f'Melhor Solucao: {ag.melhor_solucao.cromossomo}',
+    f'Nota - {ag.melhor_solucao.nota_avaliacao}')
+    print("-------------------------------------------------------------------\n")
 
-    individuo1.mutacao(0.05)
-    print('\n')
-    individuo2.mutacao(0.05)
-    print('\n')
 
