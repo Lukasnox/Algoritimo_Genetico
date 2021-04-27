@@ -35,8 +35,6 @@ if __name__ == '__main__':
 
 #-----------------------------↓ Exibindo ↓------------------------------------------
 
-    
-
     tamanho_populacao = 20
     ag = AlgoritmoGenetico(tamanho_populacao)
     ag.inicializa_populacao(espacos,valores,limite)
@@ -46,10 +44,23 @@ if __name__ == '__main__':
    
     ag.ordena_populacao()
     ag.melhor_individuo(ag.populacao[0])
-    
 
-    print(f'Melhor Solucao: {ag.melhor_solucao.cromossomo}',
-    f'Nota - {ag.melhor_solucao.nota_avaliacao}')
+    soma = ag.soma_avaliacoes()
+  
+    print("-------------------------------------------------------------------\n")
+    print(f'Soma das Avaliações: {soma}')
     print("-------------------------------------------------------------------\n")
 
+
+'''
+ tamanho_populacao = 20
+    ag = AlgoritmoGenetico(tamanho_populacao)
+    ag.inicializa_populacao(espacos, valores, limite)
+    for individuo in ag.populacao:
+        individuo.avaliacao()
+    ag.ordena_populacao()
+    ag.melhor_individuo(ag.populacao[0])
+    soma = ag.soma_avaliacoes()
+    print("Soma das avaliações: %s" % soma)
+'''
 
