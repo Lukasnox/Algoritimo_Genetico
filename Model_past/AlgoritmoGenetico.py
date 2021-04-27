@@ -17,7 +17,7 @@ class AlgoritmoGenetico():
     def ordena_populacao(self):
         self.populacao = sorted(self.populacao, 
         key = lambda populacao: populacao.nota_avaliacao,
-        reverse=True)
+        reverse = True)
 #----------------------------------------------------------------------------------
     def melhor_individuo(self, individuo):
         if individuo.nota_avaliacao > self.melhor_solucao.nota_avalaicao:

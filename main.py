@@ -1,4 +1,4 @@
-from Model_past.Individuo import Individuo
+#from Model_past.Individuo import Individuo
 from Model_past.Produto_class import Produto
 from Model_past.AlgoritmoGenetico import AlgoritmoGenetico
 #-----------------------------↑ Importando ↑---------------------------------------
